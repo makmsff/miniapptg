@@ -10,16 +10,16 @@
     let tg = window.Telegram.WebApp;
     tg.ready();
 
-    // Добавляем обработчик на MainButton
-    tg.MainButton.setText("Отправить данные");
+    // Создаем кнопку, которая ТОЧНО шлет данные
+    tg.MainButton.text = "Получить предсказание";
     tg.MainButton.show();
 
     tg.MainButton.onClick(() => {
-        // Выводим информацию о боте, который открыл приложение
-        alert("Бот ID: " + tg.initDataUnsafe.chat?.id); 
+        // Пробуем отправить просто строку
+        tg.sendData("Удача близко!");
         
-        // Попытка отправить данные
-        tg.sendData("ПРОВЕРКА_СВЯЗИ_123");
+        // Закрываем приложение, чтобы проверить, придет ли сигнал
+        tg.close();
     });
 </script>
 </body>
