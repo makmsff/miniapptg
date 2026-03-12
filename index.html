@@ -7,14 +7,24 @@
     <h1>Тест связи</h1>
     <button onclick="testSend()">Отправить тест</button>
 
-    <script>
-        let tg = window.Telegram.WebApp;
-        tg.ready();
+<script>
+    let tg = window.Telegram.WebApp;
+    tg.ready();
 
-        function testSend() {
-            tg.sendData("ТЕСТ СВЯЗИ РАБОТАЕТ");
-            alert("Данные отправлены!"); 
+    tg.MainButton.setText("Проверить связь");
+    tg.MainButton.show();
+
+    tg.MainButton.onClick(() => {
+        // Добавим алерт, чтобы проверить, работает ли вообще JavaScript
+        alert("Кнопка нажата! Пытаюсь отправить...");
+        
+        try {
+            tg.sendData("ТЕСТ_СВЯЗИ_ПРОШЕЛ");
+            alert("Команда sendData отправлена!");
+        } catch (e) {
+            alert("Ошибка: " + e.message);
         }
-    </script>
+    });
+</script>
 </body>
 </html>
