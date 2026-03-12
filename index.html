@@ -1,21 +1,27 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html>
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Мое Mini App</title>
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <style>
-        body { font-family: sans-serif; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; margin: 0; }
+        body { font-family: sans-serif; text-align: center; padding: 20px; }
     </style>
 </head>
 <body>
     <h1>Привет! Это мое Mini App</h1>
-    <p id="user-name"></p>
+    <button id="mainButton">Нажми меня!</button>
+
     <script>
         let tg = window.Telegram.WebApp;
-        tg.expand();
-        document.getElementById("user-name").innerText = "Привет, " + tg.initDataUnsafe.user.first_name + "!";
+        tg.ready();
+        
+        // Показываем кнопку Telegram внизу экрана
+        tg.MainButton.text = "Закрыть";
+        tg.MainButton.show();
+        
+        tg.MainButton.onClick(function() {
+            tg.close();
+        });
     </script>
 </body>
 </html>
