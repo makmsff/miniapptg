@@ -6,24 +6,20 @@
 <body>
     <h1>Тест связи</h1>
     <button onclick="testSend()">Отправить тест</button>
-
 <script>
     let tg = window.Telegram.WebApp;
     tg.ready();
 
-    tg.MainButton.setText("Проверить связь");
+    // Добавляем обработчик на MainButton
+    tg.MainButton.setText("Отправить данные");
     tg.MainButton.show();
 
     tg.MainButton.onClick(() => {
-        // Добавим алерт, чтобы проверить, работает ли вообще JavaScript
-        alert("Кнопка нажата! Пытаюсь отправить...");
+        // Выводим информацию о боте, который открыл приложение
+        alert("Бот ID: " + tg.initDataUnsafe.chat?.id); 
         
-        try {
-            tg.sendData("ТЕСТ_СВЯЗИ_ПРОШЕЛ");
-            alert("Команда sendData отправлена!");
-        } catch (e) {
-            alert("Ошибка: " + e.message);
-        }
+        // Попытка отправить данные
+        tg.sendData("ПРОВЕРКА_СВЯЗИ_123");
     });
 </script>
 </body>
